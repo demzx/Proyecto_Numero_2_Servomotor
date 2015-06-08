@@ -25,7 +25,7 @@ module Derivador #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decimal+1)
 	output wire signed [N-1:0] derivador
     );
 	 
-wire signed [N-1:0] SalidaSuma, SalidaRegistro;
+wire signed [N-1:0] SalidaSuma,SalidaSuma_R,derivador_R,SalidaRegistro;
 
 Registro_Pipeline #(.N(N)) Reg (
     .clk(clk), 
@@ -40,12 +40,27 @@ Suma #(.N(N)) sum (
     .B(-(SalidaRegistro)), 
     .SUMA(SalidaSuma)
     );
+	 
+Registro_N_bits #(.N(N)) Reg_Timing (
+    .clock(clk), 
+    .reset(reset), 
+    .d(SalidaSuma), 
+    .q(SalidaSuma_R)
+    );
 
 Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
-    .A(SalidaSuma), 
+    .A(SalidaSuma_R), 
     .B(18'd150), 
-    .multi(derivador)
+    .multi(derivador_R)
     );
+	 
+Registro_N_bits #(.N(N)) Reg_Timing2 (
+    .clock(clk), 
+    .reset(reset), 
+    .d(derivador_R), 
+    .q(derivador)
+    );
+
 
 
 endmodule

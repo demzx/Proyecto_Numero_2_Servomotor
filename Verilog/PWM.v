@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module PWM  #(N=8) // se pone como parametro el tamano de bits de la entrada 
+module PWM  #(parameter N=8) // se pone como parametro el tamano de bits de la entrada 
 
 (  
   input wire Clock,reset, // se declaran el clock y el reset 

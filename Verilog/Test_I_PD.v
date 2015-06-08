@@ -90,10 +90,27 @@ initial begin
 	$readmemb("y_Binario.txt",mem2);
 	for (k=0; k<5000; k=k+1)// ciclo for para recorrer el fichero cargado
 	begin
+//		referencia = mem1[k];
+//		y = mem2[k];
+		@(posedge clk)
 		referencia = mem1[k];
 		y = mem2[k];
-		@(negedge clk)
 		enable = 1;
+		@(posedge clk)
+		enable = 1;
+		
+		//Prueba
+		@(posedge clk)
+		enable = 1;
+		@(posedge clk)
+		enable = 1;
+		@(posedge clk)
+		enable = 1;
+		//*************
+		@(posedge clk)
+		enable = 0;
+		@(posedge clk)
+		enable = 0;
 		@(posedge clk)
 		enable = 0;
 		//#100;
@@ -101,6 +118,7 @@ initial begin
 		//#100;
 	end
 	$fclose(I_PD);//cierra el fichero Documento
+	$stop;
 	end
       
 endmodule

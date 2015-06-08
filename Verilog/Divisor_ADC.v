@@ -25,7 +25,7 @@ module Divisor_Clock_ADC(
  ); 
  
  
- reg [14:0] contador ; 
+ reg [13:0] contador ; 
 
  
 always @(posedge Clck_in,posedge reset_Clock) 

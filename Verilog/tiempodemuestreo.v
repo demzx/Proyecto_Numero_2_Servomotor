@@ -38,7 +38,7 @@ always @(posedge Clck_in,posedge reset_Clock)
 			end 
       else if (enable)
           begin		
-		    if (contador == 19'd500000)  
+		    if (contador == 19'd499999)  
 		        begin                    
 			     contador <=19'd0;       
 		        Clock_out <= ~Clock_out;
