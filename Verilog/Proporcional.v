@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Proporcional #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decimal+1)
+module Proporcional #(parameter Magnitud=18, Decimal=0, N = Magnitud+Decimal+1)
 	(
 	input wire clk, reset,
 	input wire signed [N-1:0]y,
@@ -28,7 +28,7 @@ module Proporcional #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decimal+1)
   wire signed [N-1:0]proporcional_R;
 	 
 Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
-    .A(18'd18), 
+    .A(19'd18), 
     .B(y), 
     .multi(proporcional_R)
     );

@@ -25,7 +25,7 @@ module Divisor_Clock_ADC(
  ); 
  
  
- reg [13:0] contador ; 
+ reg [11:0] contador ; 
 
  
 always @(posedge Clck_in,posedge reset_Clock) 
@@ -37,9 +37,9 @@ always @(posedge Clck_in,posedge reset_Clock)
 			end 
       else
           begin		
-		    if (contador == 14'd15624)  
+		    if (contador == 12'd2499)  
 		        begin                    
-			     contador <=14'd0;       
+			     contador <= 12'd0;       
 		        Clock_out <= ~Clock_out;
 		        end 
 		     else 

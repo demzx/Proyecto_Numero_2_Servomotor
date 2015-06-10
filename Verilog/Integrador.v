@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Integrador #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decimal+1)
+module Integrador #(parameter Magnitud=18, Decimal=0, N = Magnitud+Decimal+1)
 (
 	input wire clk, reset, enable,
 	input wire signed [N-1:0]error,
@@ -37,7 +37,7 @@ Registro_N_bits #(.N(N)) Reg_Timing (
 
 
 Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
-    .A(18'd7), 
+    .A(19'd7), 
     .B(error_R), 
     .multi(SalidaMultiplicacion)
     );

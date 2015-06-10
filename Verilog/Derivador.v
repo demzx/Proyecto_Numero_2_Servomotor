@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Derivador #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decimal+1)
+module Derivador #(parameter Magnitud=18, Decimal=0, N = Magnitud+Decimal+1)
 	(
 	input wire clk, reset, enable,
 	input wire signed [N-1:0]y,
@@ -50,7 +50,7 @@ Registro_N_bits #(.N(N)) Reg_Timing (
 
 Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
     .A(SalidaSuma_R), 
-    .B(18'd150), 
+    .B(19'd150), 
     .multi(derivador_R)
     );
 	 

@@ -23,7 +23,7 @@ module Acondicionamiento #(parameter Magnitud=17, Decimal=0, N = Magnitud+Decima
 		input wire clk, reset, enable,
 		input wire signed [N-1:0]referencia, y,
 		output wire signed [7:0]Entrada_PWM,
-		//output wire [5:0]sal,
+		output wire [9:0]sal_W,
 		//output wire [3:0] sal2,
 		output wire signed [N-1:0]IPD
 
@@ -52,22 +52,22 @@ Registro_N_bits #(.N(N))Reg_Timing (
 
 
 
-Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
-    .A(18'd2), 
-    .B(IPD_R), 
-    .multi(SalidaMultiplicacion)
-    );
+//Multiplicacion #(.Magnitud(Magnitud),.Decimal(Decimal)) mult (
+//    .A(18'd2), 
+//    .B(IPD_R), 
+//    .multi(SalidaMultiplicacion)
+//    );
 
 
 
-Suma #(.N(ADC)) Suma_Integrador_Proporcional (
-    .A(SalidaMultiplicacion[N-1:N-12]), 
-    .B(12'd2048), 
+Suma #(.N(ADC)) Suma_Offset (
+    .A(IPD_R), 
+    .B(19'b0100000000000000000), 
     .SUMA(Sal)
     );
 	 
 //assign sal = Sal [N-13:0];
 //assign sal2 = Sal [ADC-9:0];
-assign Entrada_PWM = Sal[ADC-1:ADC-8];
-
+assign Entrada_PWM = Sal[ADC-2:ADC-9];
+assign sal_W = Sal[9:0];
 endmodule

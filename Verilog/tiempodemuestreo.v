@@ -25,7 +25,7 @@ module tiempodemuestreo(
  ); 
  
  
- reg [18:0] contador; 
+ reg [17:0] contador; 
 
 
  
@@ -38,9 +38,9 @@ always @(posedge Clck_in,posedge reset_Clock)
 			end 
       else if (enable)
           begin		
-		    if (contador == 19'd499999)  
+		    if (contador == 18'd249999)  
 		        begin                    
-			     contador <=19'd0;       
+			     contador <=18'd0;       
 		        Clock_out <= ~Clock_out;
 		        end 
 		     else 
